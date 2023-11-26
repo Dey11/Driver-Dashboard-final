@@ -16,10 +16,6 @@ const DriverSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    driveruid: {
-      type: String,
-      required: true,
-    },
     autono: {
       type: String,
       required: true,

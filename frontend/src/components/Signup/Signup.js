@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import axios from "axios";
 
 import InputControl from "../InputControl/InputControl";
 import { auth } from "../../firebase";
@@ -33,6 +34,21 @@ function Signup() {
         await updateProfile(user, {
           displayName: values.name,
         });
+
+        await axios
+          .post("http://localhost:5000/api/sign-up", {
+            name: values.name,
+            email: values.email,
+            password: values.pass,
+            autono: values.autono,
+          })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
         navigate("/");
       })
       .catch((err) => {
