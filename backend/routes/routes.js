@@ -6,8 +6,7 @@ router.get("/", (req, res) => {
   res.send("hello world");
 });
 
-router.post("/sign-up", signUp);
-// .get("/get-passenger-status", getPassengerStatus)
-// .get("/get-driver-info", getDriverInfo);
+router.post("/sign-up", signUp).get("/get-driver-info/:email", getDriverInfo);
+// .get("/get-passenger-status", getPassengerStatus);
 
 module.exports = router;
