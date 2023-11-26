@@ -24,7 +24,7 @@ const DriverSchema = new mongoose.Schema(
     passengerOneName: {
       type: String,
       trim: true,
-      default: "Pass1",
+      default: "Passenger 1",
     },
     passengerOneIsBooked: {
       type: Boolean,
@@ -34,7 +34,7 @@ const DriverSchema = new mongoose.Schema(
     passengerTwoName: {
       type: String,
       trim: true,
-      default: "Pass2",
+      default: "Passenger 2",
     },
     passengerTwoIsBooked: {
       type: Boolean,
@@ -44,7 +44,7 @@ const DriverSchema = new mongoose.Schema(
     passengerThreeName: {
       type: String,
       trim: true,
-      default: "Pass3",
+      default: "Passenger 3",
     },
     passengerThreeIsBooked: {
       type: Boolean,
@@ -54,7 +54,7 @@ const DriverSchema = new mongoose.Schema(
     passengerFourName: {
       type: String,
       trim: true,
-      default: "Pass4",
+      default: "Passenger 4",
     },
     passengerFourIsBooked: {
       type: Boolean,

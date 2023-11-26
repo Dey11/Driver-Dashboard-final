@@ -1,0 +1,15 @@
+.usercard {
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.usercard h3 {
+  margin-bottom: 8px;
+}
+
+.usercard p {
+  margin: 8px 0;
+}
