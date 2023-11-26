@@ -35,21 +35,29 @@ const Home = (props) => {
                   id: crypto.randomUUID(),
                   name: res.data.passengerOneName,
                   status: res.data.passengerOneIsBooked,
+                  pickup: res.data.passengerOnePickup,
+                  destination: res.data.passengerOneDestination,
                 },
                 {
                   id: crypto.randomUUID(),
                   name: res.data.passengerTwoName,
                   status: res.data.passengerTwoIsBooked,
+                  pickup: res.data.passengerTwoPickup,
+                  destination: res.data.passengerTwoDestination,
                 },
                 {
                   id: crypto.randomUUID(),
                   name: res.data.passengerThreeName,
                   status: res.data.passengerThreeIsBooked,
+                  pickup: res.data.passengerThreePickup,
+                  destination: res.data.passengerThreeDestination,
                 },
                 {
                   id: crypto.randomUUID(),
                   name: res.data.passengerFourName,
                   status: res.data.passengerFourIsBooked,
+                  pickup: res.data.passengerFourPickup,
+                  destination: res.data.passengerFourDestination,
                 },
               ]);
 
@@ -80,7 +88,12 @@ const Home = (props) => {
             <ul>
               {list.map((item) => (
                 <li key={item.id}>
-                  <Card name={item.name} status={item.status} />
+                  <Card
+                    name={item.name}
+                    status={item.status}
+                    pickup={item.pickup}
+                    destination={item.destination}
+                  />
                 </li>
               ))}
             </ul>

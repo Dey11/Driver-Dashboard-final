@@ -31,6 +31,18 @@ const DriverSchema = new mongoose.Schema(
       required: true,
       default: false,
     },
+    passengerOnePickup: {
+      type: String,
+      trim: true,
+      default: "Auto Stand",
+      required: true,
+    },
+    passengerOneDestination: {
+      type: String,
+      trim: true,
+      default: "Unspecified",
+      required: true,
+    },
     passengerTwoName: {
       type: String,
       trim: true,
@@ -40,6 +52,18 @@ const DriverSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
       default: false,
+    },
+    passengerTwoPickup: {
+      type: String,
+      trim: true,
+      default: "Auto Stand",
+      required: true,
+    },
+    passengerTwoDestination: {
+      type: String,
+      trim: true,
+      default: "Unspecified",
+      required: true,
     },
     passengerThreeName: {
       type: String,
@@ -51,6 +75,18 @@ const DriverSchema = new mongoose.Schema(
       required: true,
       default: false,
     },
+    passengerThreePickup: {
+      type: String,
+      trim: true,
+      default: "Auto Stand",
+      required: true,
+    },
+    passengerThreeDestination: {
+      type: String,
+      trim: true,
+      default: "Unspecified",
+      required: true,
+    },
     passengerFourName: {
       type: String,
       trim: true,
@@ -60,6 +96,18 @@ const DriverSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
       default: false,
+    },
+    passengerFourPickup: {
+      type: String,
+      trim: true,
+      default: "Auto Stand",
+      required: true,
+    },
+    passengerFourDestination: {
+      type: String,
+      trim: true,
+      default: "Unspecified",
+      required: true,
     },
     driverIsBooked: {
       type: String,
