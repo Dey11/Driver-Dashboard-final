@@ -84,3 +84,31 @@ exports.finishRide = async (req, res) => {
     res.status(500).json({ message: "Server Error!" });
   }
 };
+
+exports.finishAllRides = async (req, res) => {
+  const { email } = req.body;
+  try {
+    const driver = await DriverSchema.findOneAndUpdate(
+      { email: email },
+      {
+        passengerOneIsBooked: false,
+        passengerOnePickup: "Auto Stand",
+        passengerOneDestination: "Unspecified",
+        passengerTwoIsBooked: false,
+        passengerTwoPickup: "Auto Stand",
+        passengerTwoDestination: "Unspecified",
+        passengerThreeIsBooked: false,
+        passengerThreePickup: "Auto Stand",
+        passengerThreeDestination: "Unspecified",
+        passengerFourIsBooked: false,
+        passengerFourPickup: "Auto Stand",
+        passengerFourDestination: "Unspecified",
+        driverIsBooked: "null",
+      },
+      { returnNewDocument: true }
+    );
+    res.status(200).json({ message: "Updated" });
+  } catch (error) {
+    res.status(500).json({ message: "Server Error!" });
+  }
+};

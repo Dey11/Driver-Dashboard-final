@@ -16,6 +16,26 @@ const Home = (props) => {
       });
   };
 
+  const handleCompleteAllRides = async () => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const email = user.email;
+
+        axios
+          .post("http://localhost:5000/api/finishAllRides", {
+            email,
+          })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    });
+  };
+
   const [list, setList] = useState([]);
   const [autono, setAutono] = useState("");
 
@@ -111,6 +131,10 @@ const Home = (props) => {
       <div>
         {props.name ? (
           <>
+            <button onClick={handleCompleteAllRides}>
+              Completed All Rides
+            </button>{" "}
+            <br />
             <button onClick={handleSignOut}>Sign Out</button>
           </>
         ) : (
