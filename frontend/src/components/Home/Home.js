@@ -28,7 +28,7 @@ const Home = (props) => {
           const email = user.email;
 
           axios
-            .get(`http://localhost:5000/api/get-driver-info/${email}`)
+            .get(`https://test1-mk8a.onrender.com/api/get-driver-info/${email}`)
             .then((res) => {
               setList([
                 {
