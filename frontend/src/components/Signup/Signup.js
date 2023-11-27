@@ -36,7 +36,7 @@ function Signup() {
         });
 
         await axios
-          .post("https://test1-mk8a.onrender.com/api/sign-up", {
+          .post("http://localhost:5000/api/sign-up", {
             name: values.name,
             email: values.email,
             password: values.pass,

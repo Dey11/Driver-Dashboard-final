@@ -8,7 +8,7 @@ function Card({ name, status, pickup, destination, num, autono }) {
   const handleFinishRide = async () => {
     setFlag(true);
     await axios
-      .post("https://test1-mk8a.onrender.com/api/finishRide", {
+      .post("http://localhost:5000/api/finishRide", {
         autono,
         num,
       })

@@ -1,14 +1,15 @@
 const DriverSchema = require("../models/driverModel");
 
 exports.bookUser = async (req, res) => {
-  const { pickup, drop, seats } = req.body;
+  const { pickup, drop } = req.body;
+  const seats = parseInt(req.body.seats);
   try {
     const driver = await DriverSchema.findOne({ driverIsBooked: "filling" });
     var freeSeats = 0;
-
+    // console.log(pickup, drop, seats);
     if (driver) {
       const autono = driver.autono;
-
+      console.log(autono);
       if (!driver.passengerFourIsBooked) {
         freeSeats++;
       }
@@ -18,21 +19,25 @@ exports.bookUser = async (req, res) => {
       if (!driver.passengerTwoIsBooked) {
         freeSeats++;
       }
+      // console.log(freeSeats);
 
       if (seats === freeSeats || seats > freeSeats) {
         if (freeSeats === 1) {
           const updatedDriver = await DriverSchema.findOneAndUpdate(
             { autono },
             {
+              driverIsBooked: "full",
               passengerFourDestination: drop,
               passengerFourIsBooked: true,
               passengerFourPickup: pickup,
             }
           );
+          // console.log(updatedDriver);
         } else if (freeSeats === 2) {
           const updatedDriver = await DriverSchema.findOneAndUpdate(
             { autono },
             {
+              driverIsBooked: "full",
               passengerFourDestination: drop,
               passengerFourIsBooked: true,
               passengerFourPickup: pickup,
@@ -41,6 +46,7 @@ exports.bookUser = async (req, res) => {
               passengerThreePickup: pickup,
             }
           );
+          // console.log(updatedDriver);
         } else {
           const updatedDriver = await DriverSchema.findOneAndUpdate(
             { autono },
@@ -57,6 +63,7 @@ exports.bookUser = async (req, res) => {
               passengerTwoPickup: pickup,
             }
           );
+          // console.log(updatedDriver);
         }
       } else if (freeSeats > seats) {
         if ((freeSeats === 3 || freeSeats === 2) && seats === 1) {
@@ -68,6 +75,7 @@ exports.bookUser = async (req, res) => {
               passengerTwoPickup: pickup,
             }
           );
+          // console.log(updatedDriver);
         } else if (freeSeats === 3 && seats === 2) {
           const updatedDriver = await DriverSchema.findOneAndUpdate(
             { autono },
@@ -80,6 +88,7 @@ exports.bookUser = async (req, res) => {
               passengerTwoPickup: pickup,
             }
           );
+          // console.log(updatedDriver);
         }
       }
       res.status(200).json({ message: `${autono}` });
@@ -89,6 +98,7 @@ exports.bookUser = async (req, res) => {
         { driverIsBooked: "filling" },
         { returnNewDocument: true }
       );
+      // console.log(driver);
       var freeSeats = 4;
       const autono = driver.autono;
       if (seats === 4) {
@@ -111,6 +121,7 @@ exports.bookUser = async (req, res) => {
           },
           { returnNewDocument: true }
         );
+        // console.log(updatedDriver);
         res.status(200).json({ message: `${autono}` });
       } else if (seats === 3) {
         const updatedDriver = await DriverSchema.findOneAndUpdate(
@@ -128,6 +139,8 @@ exports.bookUser = async (req, res) => {
           },
           { returnNewDocument: true }
         );
+        // console.log(updatedDriver);
+
         res.status(200).json({ message: `${autono}` });
       } else if (seats === 2) {
         const updatedDriver = await DriverSchema.findOneAndUpdate(
@@ -142,6 +155,8 @@ exports.bookUser = async (req, res) => {
           },
           { returnNewDocument: true }
         );
+        // console.log(updatedDriver);
+
         res.status(200).json({ message: `${autono}` });
       } else {
         const updatedDriver = await DriverSchema.findOneAndUpdate(
@@ -153,11 +168,13 @@ exports.bookUser = async (req, res) => {
           },
           { returnNewDocument: true }
         );
+        // console.log(updatedDriver);
+
         res.status(200).json({ message: `${autono}` });
       }
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     res.status(500).json({ message: "Server Error!" });
   }
 };
