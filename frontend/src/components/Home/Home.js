@@ -33,6 +33,7 @@ const Home = (props) => {
               setList([
                 {
                   id: crypto.randomUUID(),
+                  num: 1,
                   name: res.data.passengerOneName,
                   status: res.data.passengerOneIsBooked,
                   pickup: res.data.passengerOnePickup,
@@ -40,6 +41,7 @@ const Home = (props) => {
                 },
                 {
                   id: crypto.randomUUID(),
+                  num: 2,
                   name: res.data.passengerTwoName,
                   status: res.data.passengerTwoIsBooked,
                   pickup: res.data.passengerTwoPickup,
@@ -47,6 +49,7 @@ const Home = (props) => {
                 },
                 {
                   id: crypto.randomUUID(),
+                  num: 3,
                   name: res.data.passengerThreeName,
                   status: res.data.passengerThreeIsBooked,
                   pickup: res.data.passengerThreePickup,
@@ -54,6 +57,7 @@ const Home = (props) => {
                 },
                 {
                   id: crypto.randomUUID(),
+                  num: 4,
                   name: res.data.passengerFourName,
                   status: res.data.passengerFourIsBooked,
                   pickup: res.data.passengerFourPickup,
@@ -90,9 +94,11 @@ const Home = (props) => {
                 <li key={item.id}>
                   <Card
                     name={item.name}
+                    num={item.num}
                     status={item.status}
                     pickup={item.pickup}
                     destination={item.destination}
+                    autono={autono}
                   />
                 </li>
               ))}
@@ -118,6 +124,7 @@ const Home = (props) => {
           </>
         )}
       </div>
+      <></>
     </div>
   );
 };
